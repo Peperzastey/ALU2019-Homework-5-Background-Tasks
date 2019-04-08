@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Homework5</string>
+
+    <string name="stop_scanning_button">stop scanning</string>
+
+    <string name="notification_channel_default_id">default</string>
+    <string name="notification_channel_default_name">Domyślne</string>
+
+    <string name="notification_1_title">Witaj ponownie!</string>
+    <string name="notification_1_text">Cieszymy się, że znowu jesteś z nami</string>
+    <string name="notification_2_title">Familiada o 16:35 na TVP2</string>
+    <string name="notification_2_text">Nie przegap najlepszego programu rozrywkowego</string>
+    <string name="notification_3_title">Obserwujemy Cię!</string>
+    <string name="notification_3_text">Ładowarka podłączona :)</string>
+    <string name="notification_4_title">Skanowanie</string>
+    <string name="notification_4_text">Skanowanie beconów aktywne…</string>
+    <string name="scanning_toast">Scanning…</string>
+</resources>

@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar"> <!-- Theme.AppCompat.Light.DarkActionBar -->
+        <!-- Note: Using a Material Components theme enables a custom view inflater which replaces default components with their Material counterparts. Currently, this only replaces <Button> XML components with <MaterialButton>. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:background">?colorPrimary</item>-->
+        <!--<item name="actionBarStyle">@style/ActionBar</item>-->
+        <!--<item name="buttonStyle">@style/Button</item>-->
+    </style>
+
+    <!--<style name="Button" parent="Widget.MaterialComponents.Button">-->
+        <!--<item name="android:textSize">20sp</item>-->
+    <!--</style>-->
+
+    <!--<style name="ActionBar" parent="Widget.AppCompat.ActionBar">-->
+        <!--<item name="android:background">?colorPrimaryDark</item>-->
+    <!--</style>-->
+
+</resources>
