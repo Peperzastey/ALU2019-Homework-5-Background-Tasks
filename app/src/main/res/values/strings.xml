@@ -5,6 +5,7 @@
 
     <string name="notification_channel_default_id">default</string>
     <string name="notification_channel_default_name">Domyślne</string>
+    <string name="notification_channel_default_description">Domyślny kanał powiadomień. Zawiera: powiadomienie o Familiadzie, o skanowaniu przez Foreground Service, powitanie po uruchomieniu (zbootowaniu) telefonu i powiadomienie o dogodnych warunkach aktualizacji (połączenie z internetem i podłączenie urządzenia do ładowania).</string>
 
     <string name="notification_1_title">Witaj ponownie!</string>
     <string name="notification_1_text">Cieszymy się, że znowu jesteś z nami</string>

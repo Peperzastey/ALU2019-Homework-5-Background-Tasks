@@ -1,4 +1,4 @@
-package pl.daftacademy.alu.ppoljanski.homework5
+package pl.daftacademy.alu.ppoljanski.homework5.view
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -10,6 +10,10 @@ import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.work.*
+import pl.daftacademy.alu.ppoljanski.homework5.broadcast.ActionBroadcastReceiver
+import pl.daftacademy.alu.ppoljanski.homework5.R
+import pl.daftacademy.alu.ppoljanski.homework5.service.ScanningService
+import pl.daftacademy.alu.ppoljanski.homework5.work.UpdateWorker
 import java.util.Calendar
 
 const val FAMILIADA_NOTIFY_ACTION = "pl.daftacademy.alu.ppoljanski.NOTIFY"
@@ -86,6 +90,6 @@ class MainActivity : AppCompatActivity() {
         WorkManager
                 .getInstance()
                 .enqueueUniqueWork(UpdateWorker::javaClass.name, ExistingWorkPolicy.REPLACE, request)
-        // KEEP ?
+        // KEEP / APPEND ?
     }
 }

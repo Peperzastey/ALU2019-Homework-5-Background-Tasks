@@ -12,10 +12,10 @@ import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
 import androidx.core.app.NotificationCompat
 import pl.daftacademy.alu.ppoljanski.homework5.R
-import pl.daftacademy.alu.ppoljanski.homework5.MainActivity
+import pl.daftacademy.alu.ppoljanski.homework5.view.MainActivity
 import java.util.*
 
-class DaftNotificationFactory {
+class NotificationFactory {
 
     fun show(context: Context, title: String?, message: String?,
              @StringRes channelResId: Int = R.string.notification_channel_default_id) =
@@ -31,9 +31,11 @@ class DaftNotificationFactory {
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle(title ?: defaultTitle)
                 .setContentText(message)
-                .setAutoCancel(true)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setContentIntent(createPendingIntent(context))
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)   // for Android 7.1 and lower
+                //TODO? setStyle bigText
                 .build()
     }
 
@@ -41,7 +43,9 @@ class DaftNotificationFactory {
     fun createNotificationChannels(context: Context) {
         val channelId = context.getString(R.string.notification_channel_default_id)
         val channelName = context.getString(R.string.notification_channel_default_name)
+        val channelDescription = context.getString(R.string.notification_channel_default_description)
         NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT)
+                .apply { description = channelDescription }
                 .let { context.notificationManager?.createNotificationChannel(it) }
     }
 
@@ -53,5 +57,5 @@ class DaftNotificationFactory {
                     .let { it.toPendingIntent(context) }
 
     private fun Intent.toPendingIntent(context: Context) =
-            PendingIntent.getActivity(context, 0, this, PendingIntent.FLAG_ONE_SHOT)
+            PendingIntent.getActivity(context, 0, this, 0)
 }

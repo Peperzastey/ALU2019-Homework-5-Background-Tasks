@@ -1,16 +1,19 @@
-package pl.daftacademy.alu.ppoljanski.homework5
+package pl.daftacademy.alu.ppoljanski.homework5.broadcast
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import pl.daftacademy.alu.ppoljanski.homework5.util.DaftNotificationFactory
+import pl.daftacademy.alu.ppoljanski.homework5.service.AlarmNotificationService
+import pl.daftacademy.alu.ppoljanski.homework5.R
+import pl.daftacademy.alu.ppoljanski.homework5.util.NotificationFactory
+import pl.daftacademy.alu.ppoljanski.homework5.view.FAMILIADA_NOTIFY_ACTION
 
 private const val TAG = "[alu]ActionBReceiver"
 
 class ActionBroadcastReceiver : BroadcastReceiver() {
 
-    private val notificationFactory by lazy { DaftNotificationFactory() }
+    private val notificationFactory by lazy { NotificationFactory() }
 
     override fun onReceive(context: Context, intent: Intent) {
         Log.d(TAG, "broadcast received, action: ${intent.action}")

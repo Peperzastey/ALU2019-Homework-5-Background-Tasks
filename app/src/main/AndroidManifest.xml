@@ -16,7 +16,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.MainActivity"
+            android:launchMode="singleTop">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +26,7 @@
         </activity>
 
         <receiver
-            android:name=".ActionBroadcastReceiver"
+            android:name=".broadcast.ActionBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -36,12 +38,12 @@
         <!-- android:directBootAware="true" needed for LOCKED_BOOT_COMPLETED -->
         <!-- android:enabled="true" -->
 
-        <service android:name=".ScanningService" />
+        <service android:name=".service.ScanningService" />
         <!-- ??? -->
         <!-- android:enabled="false" -->
         <!-- android:exported="false" -->
 
-        <service android:name=".AlarmNotificationService"
+        <service android:name=".service.AlarmNotificationService"
             android:exported="false" />
 
     </application>
