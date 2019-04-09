@@ -29,6 +29,7 @@
             android:name=".broadcast.ActionBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <!-- since API level 24 (Build.VERSION_CODES.N) -->
@@ -36,15 +37,11 @@
             </intent-filter>
         </receiver>
         <!-- android:directBootAware="true" needed for LOCKED_BOOT_COMPLETED -->
-        <!-- android:enabled="true" -->
 
         <service android:name=".service.ScanningService" />
-        <!-- ??? -->
-        <!-- android:enabled="false" -->
-        <!-- android:exported="false" -->
 
-        <service android:name=".service.AlarmNotificationService"
-            android:exported="false" />
+        <service android:name=".service.AlarmNotificationService" />
+        <!-- android:directBootAware="true" needed for LOCKED_BOOT_COMPLETED -->
 
     </application>
 

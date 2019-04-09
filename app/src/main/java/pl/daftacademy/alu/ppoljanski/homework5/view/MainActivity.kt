@@ -12,17 +12,16 @@ import androidx.core.content.ContextCompat
 import androidx.work.*
 import pl.daftacademy.alu.ppoljanski.homework5.broadcast.ActionBroadcastReceiver
 import pl.daftacademy.alu.ppoljanski.homework5.R
+import pl.daftacademy.alu.ppoljanski.homework5.broadcast.ACTION_NOTIFY_FAMILIADA
 import pl.daftacademy.alu.ppoljanski.homework5.service.ScanningService
 import pl.daftacademy.alu.ppoljanski.homework5.work.UpdateWorker
 import java.util.Calendar
-
-const val FAMILIADA_NOTIFY_ACTION = "pl.daftacademy.alu.ppoljanski.NOTIFY"
 
 private const val TAG = "[alu]MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
-    private val alarmManager: AlarmManager  //TODO? AlarmManagerCompat?
+    private val alarmManager: AlarmManager
         get() = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,9 +39,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "stopScanning clicked")
         stopService(Intent(this, ScanningService::class.java))
     }
-    //TODO button to cancel daily alarm
 
-    //TODO add Toast/Snackbar(with UNDO action)
     private fun scheduleDailyAlarm() {
         val now = Calendar.getInstance()
         val timeOfAlarm = now.clone() as Calendar
@@ -61,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         // explicit intent
         Intent(this, ActionBroadcastReceiver::class.java)
-                .apply { action = FAMILIADA_NOTIFY_ACTION }
+                .apply { action = ACTION_NOTIFY_FAMILIADA }
                 .let { PendingIntent.getBroadcast(this, 0, it, 0) }
                 .let {
                     alarmManager.setRepeating(
@@ -74,12 +71,9 @@ class MainActivity : AppCompatActivity() {
         /* Note: as of API 19, all repeating alarms are inexact.
         If your application needs precise delivery times then it must use one-time exact alarms, rescheduling each time as described above.
         Legacy applications whose targetSdkVersion is earlier than API 19 will continue to have all of their alarms, including repeating alarms, treated as exact. */
-
-        // inexact: e.g. 16.42 instead of 16.40
     }
 
     private fun scheduleUpdate() {
-        //TODO schedule only once (<- sharedPrefs?)
         val constraint = Constraints.Builder()
                 .setRequiresCharging(true)
                 .setRequiredNetworkType(NetworkType.CONNECTED)
@@ -89,7 +83,6 @@ class MainActivity : AppCompatActivity() {
                 .build()
         WorkManager
                 .getInstance()
-                .enqueueUniqueWork(UpdateWorker::javaClass.name, ExistingWorkPolicy.REPLACE, request)
-        // KEEP / APPEND ?
+                .enqueueUniqueWork(UpdateWorker::javaClass.name, ExistingWorkPolicy.KEEP, request)
     }
 }

@@ -18,7 +18,9 @@ class UpdateWorker(context: Context, params: WorkerParameters) : Worker(context,
     override fun doWork(): Result {
         Log.d(TAG, "do work")
         Handler(Looper.getMainLooper()).post {
-            with(applicationContext) { notificationFactory.show(this, getString(R.string.notification_3_title), getString(R.string.notification_3_text)) }
+            with(applicationContext) {
+                notificationFactory.show(this, getString(R.string.notification_3_title), getString(R.string.notification_3_text))
+            }
         }
         return Result.success()
     }

@@ -35,7 +35,6 @@ class NotificationFactory {
                 .setContentIntent(createPendingIntent(context))
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)   // for Android 7.1 and lower
-                //TODO? setStyle bigText
                 .build()
     }
 

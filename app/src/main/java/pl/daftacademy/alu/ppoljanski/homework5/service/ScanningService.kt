@@ -15,12 +15,12 @@ class ScanningService : Service() {
     private val notificationFactory by lazy { NotificationFactory() }
     private val NOTIFICATION_ID = 1
     private val NOTIFICATION_TITLE by lazy(LazyThreadSafetyMode.NONE) { getString(R.string.notification_4_title) }
-    private val NOTIFICATION_TEXT by lazy(LazyThreadSafetyMode.NONE) { getString(R.string.notification_4_text) }
+    private val NOTIFICATION_BODY by lazy(LazyThreadSafetyMode.NONE) { getString(R.string.notification_4_text) }
 
     override fun onCreate() {
         super.onCreate()
         Log.d(TAG, "created")
-        startForeground(NOTIFICATION_ID, notificationFactory.create(this, NOTIFICATION_TITLE, NOTIFICATION_TEXT))
+        startForeground(NOTIFICATION_ID, notificationFactory.create(this, NOTIFICATION_TITLE, NOTIFICATION_BODY))
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
